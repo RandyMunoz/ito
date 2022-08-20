@@ -1,0 +1,30 @@
+.container-group {
+  flex-direction: row;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+
+  .input-form {
+    flex-grow: 1;
+    width: 50%;
+    margin: .5rem 0;
+
+    mat-form-field {
+      width: 90%;
+    }
+  }
+
+  .input-form-textarea {
+    flex-grow: 1;
+    margin: .5rem 0;
+
+    mat-form-field {
+      width: 95%;
+    }
+  }
+
+  .input-form-button {
+    flex-grow: 0;
+  }
+
+}

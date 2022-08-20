@@ -1,0 +1,41 @@
+<h1>Detail Posts</h1>
+<div class="container">
+  <mat-card>
+    <mat-card-title>{{posts.title}}</mat-card-title>
+    <mat-card-subtitle>Number post: {{posts.id}}</mat-card-subtitle>
+    <mat-card-content>
+      {{posts.body}}
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<h1>Detail Autor</h1>
+<div class="detail-autor">
+  <strong>Name: </strong>
+  <span>{{user.name}}</span><br>
+  <strong>Phone: </strong>
+  <span>{{user.phone}}</span><br>
+  <strong>E-mail: </strong>
+  <span>{{user.email}}</span><br>
+  <strong>Website: </strong>
+  <span>{{user.website}}</span><br><br><br>
+</div>
+
+<h1>Comments users</h1>
+
+<div class="container">
+  <mat-card class="card" *ngFor="let comment of comments$ | async">
+    <mat-card-title>{{comment.name}}</mat-card-title>
+    <mat-card-subtitle>{{comment.email}}</mat-card-subtitle>
+    <mat-card-content>
+      {{comment.body}}
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<div class="button-back">
+  <button mat-raised-button color="primary" (click)="goHome()">
+    <mat-icon aria-hidden="false" fontIcon="arrow_back"></mat-icon>
+    Back
+  </button>
+</div>

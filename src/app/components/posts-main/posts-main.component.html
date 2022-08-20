@@ -1,0 +1,37 @@
+<div class="container-title">
+  <div class="child">
+    <h1>Post Recent</h1>
+  </div>
+  <div class="child button-create">
+    <button mat-raised-button color="primary" (click)="goCreatePosts()">Create Posts</button>
+  </div>
+</div>
+<hr>
+
+<mat-form-field appearance="fill">
+  <mat-label>Filter by User</mat-label>
+  <mat-select [(ngModel)]="filterPosts">
+    <mat-option *ngFor="let user of listUsers" [value]="user.id">
+      {{user.name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<div class="container">
+  <div class="card" *ngFor="let p of listPosts$ | async | filter:filterPosts">
+    <mat-card>
+      <mat-card-title>{{p.title.substr(0,20)}}</mat-card-title>
+      <div *ngFor="let user of listUsers">
+        <mat-card-subtitle *ngIf="user.id === p.userId">{{user.name}}</mat-card-subtitle>
+      </div>
+      <mat-card-content>
+        {{p.body.substr(0,100) + '...'}}
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="goDetailPosts(p)" matTooltip="Detail posts"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="send"></mat-icon></button>
+        <button mat-button (click)="goEditPosts(p)" matTooltip="Edit posts"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="edit"></mat-icon></button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+</div>

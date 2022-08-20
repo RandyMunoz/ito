@@ -1,0 +1,36 @@
+<h1>Creating Posts</h1>
+
+<form [formGroup]="PostsForm" (submit)="saveForm()">
+  <div class="container-group">
+    <div class="input-form">
+      <mat-form-field appearance="fill">
+        <mat-label>Title posts</mat-label>
+        <input matInput formControlName="title" required>
+      </mat-form-field>
+    </div>
+    <div class="input-form">
+      <mat-form-field appearance="fill">
+        <mat-label>Autor posts</mat-label>
+        <mat-select formControlName="userId" required>
+          <mat-option>-- Select --</mat-option>
+          <mat-option *ngFor="let user of listUsers" [value]="user.id">
+            {{user.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="container-group">
+    <div class="input-form-textarea">
+      <mat-form-field appearance="fill">
+        <mat-label>Body</mat-label>
+        <textarea matInput rows="6" formControlName="body" required></textarea>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="container-group">
+    <div class="input-form-button">
+      <button type="submit" mat-raised-button color="primary" [disabled]="!PostsForm.valid">Create</button>
+    </div>
+  </div>
+</form>
